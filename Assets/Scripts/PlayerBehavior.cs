@@ -12,7 +12,7 @@ public class PlayerBehavior : MonoBehaviour
 
 
     [SerializeField]
-    private int health = 100;
+    private float health = 100;
     public float moveSpeed = 20.0f;
 
     public float descentSpeed = 1.0f;
@@ -279,6 +279,13 @@ public class PlayerBehavior : MonoBehaviour
         */
     }
 
+    public void takeDamage(float damage)
+    {
+        float damageCalc = health - damage;
+
+        setHealth(damageCalc);
+
+    }
 
 
     /*
@@ -323,12 +330,12 @@ public class PlayerBehavior : MonoBehaviour
     {
         return isFacingLeft;
     }   
-    public int getHealth()
+    public float getHealth()
     {
         return health;
     }
 
-    public void setHealth(int health)
+    public void setHealth(float health)
     {
         this.health = health;
     }

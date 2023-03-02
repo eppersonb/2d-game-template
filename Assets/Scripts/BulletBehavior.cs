@@ -7,7 +7,12 @@ public class BulletBehavior : MonoBehaviour
     
 
     
-    
+    public PlayerBehavior player;
+
+    public EnemyBehavior enemy;
+
+    private float damage = 10;
+
     [SerializeField]
     private bool isShot = false;
     [SerializeField]
@@ -23,23 +28,28 @@ public class BulletBehavior : MonoBehaviour
     private float projectileLifeTime = 3;
 
     [SerializeField]
-    private int bulletDamage = 1;
+    private int bulletDamage = 10;
 
     [SerializeField]
-    public float bulletLifeTime = 60.0f;
+    public float bulletLifeTime = 120f;
 
     
 
-    Rigidbody2D bullet;
+    // Rigidbody2D bullet;
 
+    GameObject bulletObject;
+
+    Rigidbody2D bullet;
 
 
 
     // Start is called before the first frame update
     void Start()
     {
-    
+        
+        bulletObject = GetComponent<GameObject>();
         bullet = GetComponent<Rigidbody2D>();
+
     }
 
     // Update is called once per frame
@@ -68,7 +78,7 @@ public class BulletBehavior : MonoBehaviour
         }
     }
 
-    void bulletMove()
+    void bulletMove() //this function makes the bullet move.
     {
         if(isBulletLeft && isShot == true)
         {
@@ -79,6 +89,31 @@ public class BulletBehavior : MonoBehaviour
         {
             bullet.AddForce(Vector2.right * 60);
         }
+    }
+
+
+    void OnCollisionEnter2D(Collision2D col) //this function handles bullet collision with either the player, enemey, or the game world and will act accordingly.
+    {
+        if(col.gameObject.tag == "enemy")
+        {
+            Debug.Log("Enemy Collision Detected!");
+
+            col.gameObject.GetComponent<EnemyBehavior>().takeDamage(bulletDamage); //this calls the enemy damage function to do damage to the enemy.
+
+            Destroy(gameObject);
+        }
+        else if(col.gameObject.tag == "Player") //this condintional is called when the bullet object collides with the player
+        {
+            Debug.Log("Player Collision Detected");
+            col.gameObject.GetComponent<PlayerBehavior>().takeDamage(bulletDamage);
+            Destroy(gameObject);
+        }
+        else if(col.gameObject.tag == "Wall" || col.gameObject.tag == "Ground") //this condintional is called when the bullet object collides with the wall or ground
+        {
+            Debug.Log("Wall or ground detected!");
+            Destroy(gameObject);
+        }
+        
     }
 
     /*

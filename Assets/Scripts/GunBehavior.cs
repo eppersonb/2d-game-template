@@ -58,8 +58,6 @@ public class GunBehavior : MonoBehaviour
 
             newBullet.setShot(true); // call bullet behavior to set the bullet object shot to true
 
-            
-
             bulletSpeed = newBullet.getBulletSpeed(); // get the bullet speed from BulletBehaviorClass
         }
 
