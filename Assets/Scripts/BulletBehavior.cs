@@ -102,10 +102,10 @@ public class BulletBehavior : MonoBehaviour
 
             Destroy(gameObject);
         }
-        else if(col.gameObject.tag == "Player") //this condintional is called when the bullet object collides with the player
+        else if(col.gameObject.tag == "Player") //this condintional is called when the bullet object collides with the player.
         {
             Debug.Log("Player Collision Detected");
-            col.gameObject.GetComponent<PlayerBehavior>().takeDamage(bulletDamage);
+            col.gameObject.GetComponent<PlayerBehavior>().takeDamage(bulletDamage); //this calls the player take damage function to damage the player.
             Destroy(gameObject);
         }
         else if(col.gameObject.tag == "Wall" || col.gameObject.tag == "Ground") //this condintional is called when the bullet object collides with the wall or ground

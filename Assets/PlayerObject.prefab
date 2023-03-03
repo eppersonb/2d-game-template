@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 39760666257853956}
   - component: {fileID: 39760666257853957}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: gun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,7 +93,7 @@ GameObject:
   m_Component:
   - component: {fileID: 39760666523381119}
   - component: {fileID: 39760666523381116}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Hand
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -178,7 +178,7 @@ GameObject:
   - component: {fileID: 39760666788979160}
   - component: {fileID: 39760666788979163}
   - component: {fileID: 39760666788979162}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: PlayerObject
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -452,7 +452,7 @@ GameObject:
   m_Component:
   - component: {fileID: 39760667690657505}
   - component: {fileID: 39760667690657510}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: firingPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cf57cae78de508b4ebc4e7be1aeefc3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   bullet: {fileID: 7787581565997982477, guid: 77059f1b5fa8a6f498b2e357fb6555b1, type: 3}
   bulletShot: 0
   bulletSpeed: 20

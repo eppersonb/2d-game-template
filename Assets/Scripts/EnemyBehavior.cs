@@ -10,7 +10,7 @@ public class EnemyBehavior : MonoBehaviour
     [SerializeField]
     private float health = 100;
 
-
+    
 
     GameObject enemy;
     void Start()
