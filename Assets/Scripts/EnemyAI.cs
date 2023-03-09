@@ -29,6 +29,9 @@ public class EnemyAI : MonoBehaviour
     private Transform lineOfSight;
 
     public bool playerSpotted;
+
+    public Rigidbody2D rb;
+
     void Start()
     {
         enemyObject = GetComponent<GameObject>();
@@ -37,10 +40,8 @@ public class EnemyAI : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        enemyMove();
         playerSpot();
     }
-
     void playerSpot()
     {
         
@@ -50,10 +51,12 @@ public class EnemyAI : MonoBehaviour
             playerSpotted = true;
             Debug.DrawRay(lineOfSight.position, lineOfSight.TransformDirection(-Vector2.right) * 10.0f , Color.green);
             Debug.Log("Player Spotted!");
+            enemyAttack();
         }
         else if(!hit)
         {
             playerSpotted = false;
+            enemyMove();
             Debug.DrawRay(lineOfSight.position, lineOfSight.TransformDirection(-Vector2.right) * 10.0f , Color.red);  
         }
         
@@ -76,16 +79,16 @@ public class EnemyAI : MonoBehaviour
                 transform.localScale = new Vector3(1,1,1);
             }
 
-            Debug.Log(Vector2.Distance(transform.position, patrolPoint.position));
+            // Debug.Log(Vector2.Distance(transform.position, patrolPoint.position));
             transform.position = Vector2.MoveTowards(transform.position, patrolPoint.transform.position, speed * Time.deltaTime); //after conditional move towards point
 
             if(Vector2.Distance(transform.position, patrolPoint.position) < 0.5f) //as the distance closes on the next point change the ID.
             {
-                if(nextPointID == points.Count - 1)
+                if(nextPointID == points.Count - 1) // starting near the middle or end
                 {
                     changeID = -1;
                 }
-                if(nextPointID == 0)
+                if(nextPointID == 0) //starting at the beginning
                 {
                     changeID = 1;
                 }
@@ -97,6 +100,12 @@ public class EnemyAI : MonoBehaviour
             
         }
         
+    }
+
+    void enemyAttack() //this makes the enemy attack
+    {
+        rb.AddForce(Vector2.right * 0f); //this stops the enemy to attack the player.
+        Debug.Log("Attacking Player");
     }
 
 }

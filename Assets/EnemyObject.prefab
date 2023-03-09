@@ -416,6 +416,7 @@ MonoBehaviour:
   canPatrol: 0
   lineOfSight: {fileID: 5601097048566330191}
   playerSpotted: 0
+  rb: {fileID: 4044624354785010346}
 --- !u!1 &8321358635936922020
 GameObject:
   m_ObjectHideFlags: 0
